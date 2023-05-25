@@ -13,7 +13,6 @@ const FadeIn = ({children, direction, delay}: FadeInProps) => {
 
     const observer = useMemo(() => {
         return new IntersectionObserver((entries, observer) => {
-            console.log(entries);
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');

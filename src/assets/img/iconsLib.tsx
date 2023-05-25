@@ -21,4 +21,11 @@ const logo = <svg id="logo" viewBox="0 0 133 60" fill="none">
 <path d="M56 34.4427C56 36.6442 54.2154 38.4288 52.014 38.4288C49.8126 38.4288 48.028 36.6442 48.028 34.4427C48.028 32.2413 49.8126 30.4567 52.014 30.4567C54.2154 30.4567 56 32.2413 56 34.4427Z" fill="#1E1E1E"/>
     </svg>
 
-export {logo}
+const burgerIcon = <svg width="25" height="18" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="25" height="2" fill="currentColor"/>
+    <rect y="8" width="21" height="2" fill="currentColor"/>
+    <rect y="16" width="15" height="2" fill="currentColor"/>
+</svg>
+
+
+export {logo, burgerIcon}

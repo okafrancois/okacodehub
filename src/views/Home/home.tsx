@@ -59,7 +59,7 @@ const Home = () => {
                         {
                             datas.map((data, index) => {
                                 return (
-                                    <FadeIn direction={"up"} delay={index * 0.1}>
+                                    <FadeIn key={`${index * 0.21}`} direction={"up"} delay={index * 0.1}>
                                         <InfoCard key={index} title={data.title} desc={data.desc}/>
                                     </FadeIn>
                                 )

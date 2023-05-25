@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import './header.scss';
-import {logo} from '@assets/img/iconsLib';
+import {burgerIcon, logo} from '@assets/img/iconsLib';
 const Header = () => {
     const loggedIn = false
 
@@ -10,11 +10,11 @@ const Header = () => {
 
     return (
         <header className={"header-component"}>
-            <nav className="main-nav container">
-                <Link className="main-nav__logo" to={'/'}>
+            <div className="header-component__wrapper container">
+                <Link className="header-component__logo" to={'/'}>
                     {logo}
                 </Link>
-                <nav>
+                <nav className={"main-nav"}>
                     <Link className="main-nav-item" to={'/signup'}>
                         <span className={"main-nav-item__text"}>Documentation</span>
                     </Link>
@@ -35,7 +35,10 @@ const Header = () => {
                         <Link to={'/'} className="main-nav-item button --outline-primary" onClick={handleLogout}>Se déconnecter</Link>
                     }
                 </nav>
-            </nav>
+                <button className={"header-component__menu-toggle"}>
+                    {burgerIcon}
+                </button>
+            </div>
         </header>
     );
 };
