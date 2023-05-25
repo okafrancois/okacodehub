@@ -1,0 +1,51 @@
+@use "funcs" as *;
+@use "variables" as *;
+
+// html reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.container {
+  max-width: rem(1440);
+  margin: 0 auto;
+  padding: 0 rem(map-get($gutters, 'sm'));
+
+  @include up(768) {
+      padding: 0 rem(map-get($gutters, 'md'));
+  }
+
+  @include up(992) {
+      padding: 0 rem(map-get($gutters, 'lg'));
+  }
+
+  @include up(1280) {
+      padding: 0 rem(map-get($gutters, 'wd'));
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

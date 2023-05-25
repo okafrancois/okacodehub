@@ -1,0 +1,87 @@
+@use "@utils/styles/funcs" as *;
+
+.home-view {
+
+  &__banner {
+    display: flex;
+    align-items: center;
+    min-height: 95vh;
+    padding: rem(120) 0;
+  }
+
+  &__banner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: rem(60);
+    margin-bottom: rem(60);
+
+    > * {
+      flex: 1;
+    }
+
+    @include down('md') {
+      flex-direction: column;
+      gap: rem(80);
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+  }
+
+  &__title {
+    font-size: rem(46);
+    font-weight: 700;
+    line-height: rem(46);
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: rem(28);
+  }
+
+  &__buttons {
+    margin-top: rem(20);
+  }
+
+
+  &__content {
+    display: flex;
+    gap: rem(60);
+    padding-bottom: rem(100) !important;
+
+    @include down('md') {
+      flex-direction: column-reverse;
+      gap: rem(80);
+    }
+
+    > * {
+      flex: 1;
+    }
+
+    &-left {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: rem(20);
+
+      > * {
+          width: calc(45% - 10px) ;
+      }
+
+      @include down('md') {
+        > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

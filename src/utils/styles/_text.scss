@@ -1,0 +1,33 @@
+@use "funcs" as *;
+@use "variables" as *;
+@use "sass:color";
+
+@each $name, $size in $text {
+  .t-base-#{$name} {
+    font-size: rem($size);
+
+    @include down('md') {
+      font-size: rem($size * 0.9);
+    }
+
+    @include down('sm') {
+      font-size: rem($size * 0.8);
+    }
+  }
+}
+
+@each $name, $size in $header {
+  .t-header-#{$name} {
+    font-size: rem($size);
+    font-weight: 700;
+    line-height: 100%;
+
+    @include down('md') {
+      font-size: rem($size * 0.9);
+    }
+
+    @include down('sm') {
+      font-size: rem($size * 0.8);
+    }
+  }
+}

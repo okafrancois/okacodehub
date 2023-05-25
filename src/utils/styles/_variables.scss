@@ -1,0 +1,43 @@
+// colors palette map
+$palette: (
+        'primary': #23b776,
+        'secondary': #d6f7e7,
+        'tertiary': #ffba08,
+        'success': #4caf50,
+        'info': #2196f3,
+        'warning': #ff9800,
+        'danger': #f44336,
+        'light': #f7f9fc,
+        'dark': #1E1E1E,
+        'white': #fff,
+        'black': #000,
+        'grey': #a0c4e6,
+);
+
+$text: (
+      'base': 16,
+      'medium': 20,
+      'large': 25,
+);
+
+$header: (
+          'small': 20,
+          'base': 25,
+          'medium': 32,
+          'large': 39,
+          'xlarge': 46,
+    );
+
+$breakpoints: (
+        'sm': 576,
+        'md': 768,
+        'lg': 992,
+        'wd': 1280,
+);
+
+$gutters: (
+        'sm': 30,
+        'md': 40,
+        'lg': 60,
+        'wd': 90,
+);

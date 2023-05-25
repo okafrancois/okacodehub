@@ -1,0 +1,79 @@
+@use "funcs" as *;
+@use "variables" as *;
+@use "sass:color";
+
+%button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  height: rem(40);
+  border-radius: rem(40);
+  font-weight: 500;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: rem(18);
+  padding: rem(5) rem(25);
+  color: #fff;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.button {
+  @extend %button-base;
+}
+
+// generate button classes for each color in palette
+
+@each $name, $color in $palette {
+  .button.--#{$name} {
+    background: color($name);
+
+    &:hover {
+      background: transparent;
+      color: color($name);
+      border-color: color($name);
+    }
+  }
+}
+
+@each $name, $color in $palette {
+  .button.--outline-#{$name} {
+    background: none;
+    border: 2px solid color($name);
+    color: color($name);
+
+    &:hover {
+      background: color($name);
+      color: #fff;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid color('grey');
+  background: none;
+  padding: rem(5) rem(10);
+  color: color('dark');
+  height: rem(40);
+
+  &:focus {
+    outline: 1px solid color('primary');
+    border-radius: rem(5);
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin-bottom: rem(5);
+    width: 100%;
+  }
+}
+
+.custom-select {
+  position: relative;
+}
