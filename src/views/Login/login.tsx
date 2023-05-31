@@ -38,7 +38,7 @@ const Login = () => {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate('/employees')
+            navigate('/profile')
         }
     })
 

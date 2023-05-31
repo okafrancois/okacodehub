@@ -2,8 +2,8 @@ import {loginFailed, loginRequest, loginSucceed, logout} from "../features/auth/
 import {signupRequest, signupFailed} from "../features/auth/signup-slice";
 import {getUserDataFailed, getUserDataRequest, getUserDataSucceed} from "../features/user/user-slice";
 import {EditUserFunc, GetUserDataFunc, LogUserInFunc, LogUserOutFunc, SignUpUserFunc} from "./func-types";
-import {getEmployeesFailed, getEmployeesRequest, getEmployeesSucceed, postEmployeeFailed, postEmployeeRequest, postEmployeeSucceed
-} from "../features/employees/employees-slice";
+import {getCollectionsFailed, getCollectionsRequest, getCollectionsSucceed, postCollectionFailed, postCollectionRequest, postCollectionSucceed
+} from "../features/collections/collections-slice";
 import {AnyAction, Dispatch} from "@reduxjs/toolkit";
 
 export const logUserIn: LogUserInFunc = ({email, password}, dispatch, keepLoggedIn) => {
@@ -107,7 +107,7 @@ export const getUserData: GetUserDataFunc = (token, dispatch) => {
     });
 
     const requestOptions: RequestInit = {
-        method: "POST",
+        method: "GET",
         headers: myHeaders,
         redirect: "follow"
     };
@@ -187,9 +187,9 @@ export const editUserData: EditUserFunc = (data, dispatch, resolveCallback) => {
             dispatch(getUserDataFailed(error));
         })
 }
-export const getEmployees = (token: string, dispatch: (arg0: any) => void, limit = 10, page = 1) => {
-    dispatch(getEmployeesRequest());
-    const uri = `${import.meta.env.VITE_API_URL}/user/employees/${page}/${limit}`;
+export const getCollections = (token: string, dispatch: (arg0: any) => void, limit = 10, page = 1) => {
+    dispatch(getCollectionsRequest());
+    const uri = `${import.meta.env.VITE_API_URL}/user/collections/${page}/${limit}`;
 
     const myHeaders = new Headers({
         "Content-Type": "application/json",
@@ -214,18 +214,18 @@ export const getEmployees = (token: string, dispatch: (arg0: any) => void, limit
             if (result.body) {
                 const data = result.body;
 
-                dispatch(getEmployeesSucceed(data));
+                dispatch(getCollectionsSucceed(data));
             } else {
-                dispatch(getEmployeesFailed(result.message));
+                dispatch(getCollectionsFailed(result.message));
             }
         })
         .catch(error => {
-            dispatch(getEmployeesFailed(error));
+            dispatch(getCollectionsFailed(error));
         })
 }
-export const postEmployee = (token: string, dispatch: any, employeeData: any, resolveCallback: any) => {
-    dispatch(postEmployeeRequest());
-    const uri = `${import.meta.env.VITE_API_URL}/user/employees`;
+export const postCollection = (token: string, dispatch: any, collectionData: any, resolveCallback: any) => {
+    dispatch(postCollectionRequest());
+    const uri = `${import.meta.env.VITE_API_URL}/user/collections`;
 
     const myHeaders = new Headers({
         "Content-Type": "application/json",
@@ -236,7 +236,7 @@ export const postEmployee = (token: string, dispatch: any, employeeData: any, re
         method: "POST",
         headers: myHeaders,
         redirect: "follow",
-        body: JSON.stringify(employeeData)
+        body: JSON.stringify(collectionData)
     };
 
     fetch(uri, requestOptions)
@@ -244,13 +244,13 @@ export const postEmployee = (token: string, dispatch: any, employeeData: any, re
         .then(result => {
             if (result.body) {
                 const data = result.body;
-                dispatch(postEmployeeSucceed(data));
+                dispatch(postCollectionSucceed(data));
                 resolveCallback();
             } else {
-                dispatch(postEmployeeFailed(result.message));
+                dispatch(postCollectionFailed(result.message));
             }
         })
         .catch(error => {
-            dispatch(postEmployeeFailed(error));
+            dispatch(postCollectionFailed(error));
         })
 }

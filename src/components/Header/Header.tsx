@@ -1,11 +1,21 @@
 import {Link} from "react-router-dom";
 import './header.scss';
 import {burgerIcon, logo} from '@assets/img/iconsLib';
+import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
+import {logUserOut} from "../../app/func.ts";
+import React, {useRef} from "react";
+
 const Header = () => {
-    const loggedIn = false
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
+    const dispatch = useAppDispatch()
+    const userMenuRef: React.MutableRefObject<any> = useRef(null)
 
     const handleLogout = () => {
-        console.log('logout')
+        logUserOut(dispatch)
+    }
+
+    const handleToggleMenu = () => {
+        userMenuRef.current.classList.toggle('active')
     }
 
     return (
@@ -15,9 +25,9 @@ const Header = () => {
                     {logo}
                 </Link>
                 <nav className={"main-nav"}>
-                    <Link className="main-nav-item" to={'/signup'}>
+                    <a href={"#"} className="main-nav-item">
                         <span className={"main-nav-item__text"}>Documentation</span>
-                    </Link>
+                    </a>
                     {
                         !loggedIn &&
                         <Link className="main-nav-item button --outline-primary" to={'/login'}>
@@ -32,12 +42,29 @@ const Header = () => {
                     }
                     {
                         loggedIn &&
-                        <Link to={'/'} className="main-nav-item button --outline-primary" onClick={handleLogout}>Se déconnecter</Link>
+                        <div className="main-nav__logged-in user-menu">
+                            <button className={"user-menu__notifs"}>
+                                <i className={"fa fa-bell"}></i>
+                            </button>
+                            <button className={"user-menu__toggle"} onClick={handleToggleMenu}>
+                                <i className={'fa fa-user'}></i>
+                            </button>
+                            <div className="user-menu__wrapper" ref={userMenuRef}>
+                                <Link to={'/ressources'} className="main-nav__logged-in-link">
+                                    <span className="main-nav__logged-in-text">Ressources</span>
+                                </Link>
+                                <Link to={'/profile'} className="main-nav__logged-in-link">
+                                    <span className="main-nav__logged-in-text">Profil</span>
+                                </Link>
+                                <Link to={'/'} className="main-nav-item button --outline-primary" onClick={handleLogout}>Se déconnecter</Link>
+                            </div>
+                        </div>
                     }
                 </nav>
                 <button className={"header-component__menu-toggle"}>
                     {burgerIcon}
                 </button>
+
             </div>
         </header>
     );

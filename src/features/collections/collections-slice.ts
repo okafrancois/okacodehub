@@ -1,26 +1,17 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export interface Employee {
+export interface Collection {
     _id: string;
-    firstName: string;
-    lastName: string;
-    jobTitle: string;
-    team: string;
-    email: string;
-    phoneNumber: number;
-    arrivalDate: string;
-    street: string,
-    city: string,
-    state: string,
-    zipcode: number,
+    title: string;
+    description: string;
     createById: string;
     createdAt: string;
     updatedAt: string;
     "__v": number;
 }
 
-export interface EmployeesState {
-    data: Employee[] | [];
+export interface CollectionsState {
+    data: Collection[] | [];
     currentPage: number;
     limit: number;
     totalDocuments: number;
@@ -29,15 +20,15 @@ export interface EmployeesState {
     error: string | null;
 }
 
-interface GetEmployeesResponse {
-    employees: Employee[];
+interface GetCollectionsResponse {
+    collections: Collection[];
     currentPage: number;
     limit: number;
     totalDocuments: number;
     totalPages: number;
 }
 
-const initialState: EmployeesState = {
+const initialState: CollectionsState = {
     data: [],
     currentPage: 1,
     limit: 10,
@@ -47,16 +38,16 @@ const initialState: EmployeesState = {
     error: null,
 }
 
-const employeesSlice = createSlice({
-    name: 'employees',
+const collectionsSlice = createSlice({
+    name: 'Collections',
     initialState,
     reducers: {
-        getEmployeesRequest(state) {
+        getCollectionsRequest(state) {
             state.loading = true;
             state.error = null;
         },
-        getEmployeesSucceed(state, action: PayloadAction<GetEmployeesResponse>) {
-            state.data = action.payload.employees;
+        getCollectionsSucceed(state, action: PayloadAction<GetCollectionsResponse>) {
+            state.data = action.payload.collections;
             state.currentPage = action.payload.currentPage;
             state.limit = action.payload.limit;
             state.totalDocuments = action.payload.totalDocuments;
@@ -64,19 +55,19 @@ const employeesSlice = createSlice({
             state.loading = false;
             state.error = null;
         },
-        getEmployeesFailed(state, action: PayloadAction<string>) {
+        getCollectionsFailed(state, action: PayloadAction<string>) {
             state.loading = false;
             state.error = action.payload;
         },
-        postEmployeeRequest(state) {
+        postCollectionRequest(state) {
             state.loading = true;
             state.error = null;
         },
-        postEmployeeSucceed(state, action: PayloadAction<Employee>) {
+        postCollectionSucceed(state) {
             state.loading = false;
             state.error = null;
         },
-        postEmployeeFailed(state, action: PayloadAction<string>) {
+        postCollectionFailed(state, action: PayloadAction<string>) {
             state.loading = false;
             state.error = action.payload;
         },
@@ -89,13 +80,13 @@ const employeesSlice = createSlice({
     }
 })
 export const {
-    getEmployeesRequest,
-    getEmployeesFailed,
-    getEmployeesSucceed,
-    postEmployeeRequest,
-    postEmployeeSucceed,
-    postEmployeeFailed,
+    getCollectionsRequest,
+    getCollectionsFailed,
+    getCollectionsSucceed,
+    postCollectionRequest,
+    postCollectionSucceed,
+    postCollectionFailed,
     updateCurrentPage,
     updateLimit
-} = employeesSlice.actions;
-export default employeesSlice.reducer;
+} = collectionsSlice.actions;
+export default collectionsSlice.reducer;

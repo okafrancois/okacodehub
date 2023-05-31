@@ -1,0 +1,39 @@
+@use "@utils/styles/funcs" as *;
+@use "@utils/styles/variables" as *;
+
+.ressources-view {
+  border-top: 1px solid color("grey-light");
+  border-bottom: 1px solid color("grey-light");
+  display: flex;
+
+  &__side-menu {
+    min-width: 250px;
+    background-color: #fff;
+    border-right: 1px solid color("grey-light");
+    padding: rem(15);
+  }
+
+  .user-image {
+    width: rem(40);
+  }
+
+  .side-nav {
+    &__username {
+      display: flex;
+      align-items: center;
+      gap: rem(10);
+      padding-bottom: rem(15);
+      border-bottom: 1px solid color("grey-light");
+    }
+
+    .sidenav {
+      padding: rem(15) 0;
+    }
+  }
+
+  &__content {
+    padding: rem(20);
+    background: color('light');
+    width: 100%;
+  }
+}

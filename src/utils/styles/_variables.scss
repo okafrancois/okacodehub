@@ -12,6 +12,7 @@ $palette: (
         'white': #fff,
         'black': #000,
         'grey': #a0c4e6,
+        'grey-light': #e7e7e7,
 );
 
 $text: (
@@ -37,7 +38,7 @@ $breakpoints: (
 
 $gutters: (
         'sm': 30,
-        'md': 40,
-        'lg': 60,
-        'wd': 90,
+        'md': 30,
+        'lg': 40,
+        'wd': 60,
 );

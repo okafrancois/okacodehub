@@ -44,7 +44,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate('/employees')
+            navigate('/collections')
         }
     })
 
